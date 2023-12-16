@@ -49,24 +49,31 @@ void display(node*root){
 
 }
 
- void levelorder(node*root){
+void levelorder_linewise(node*root){
     queue<node*>q;
     q.push(root);
     while(q.size()>0){
-        node*temp=q.front();
-        q.pop();
-        cout<<temp->val<<" ";
-        for(node*child:temp->children){
-            q.push(child);
+        int s=q.size();
+        while(s-->0){
+            node*temp=q.front();
+            q.pop();
+            cout<<temp->val<<" ";
+            for(node*child:temp->children){
+                q.push(child);
+            }
         }
+        cout<<endl;
+
     }
+    
+
 }
 int main(){
        vector <int> arr;
        arr.assign({10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1,-1});
         
         node*root=construct_tree(arr);
-     levelorder(root);
+     levelorder_linewise(root);
 
 
 }
