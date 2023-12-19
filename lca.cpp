@@ -67,17 +67,25 @@ vector<int> node_to_path(node*root,int val){
     
     
 }
-i
+int lca(node*root,int val1,int val2){
+    vector<int>arr1=node_to_path(root,val1);
+    vector<int>arr2=node_to_path(root,val2);
+    int i=arr1.size()-1;
+    int j=arr2.size()-1;
+    while(i>=0 and j>=0 and arr1[i]==arr2[j]){
+        i--;
+        j--;
+    }
+    return arr1[i+1];
+
+}
 
 int main(){
        vector <int> arr;
        arr.assign({10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,100,-1,-1,-1});
         
         node*root=construct_tree(arr);
-     vector<int>ans= node_to_path(root,110);
-     for(int val:ans){
-        cout<<val<<" ";
-     }
+     cout<<lca(root,120,100);
 
 
 }
